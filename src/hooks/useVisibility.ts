@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef, RefObject } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import type { RefObject } from 'react'
 
 export function useVisibility(threshold = 0.15): [RefObject<HTMLElement | null>, boolean] {
   const ref = useRef<HTMLElement | null>(null)
