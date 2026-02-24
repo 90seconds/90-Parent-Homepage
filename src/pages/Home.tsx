@@ -16,7 +16,7 @@ const coreModes = [
   {
     name: 'Video Creation Agent',
     description: 'AI-led planning that transforms your brief into a production-ready video plan in days, not weeks',
-    metric: '3 weeks → 3 days',
+    metric: 'Fully agentic',
     color: '#C9A0FF',
     icon: '⚡',
     tagline: 'AI-powered planning',
