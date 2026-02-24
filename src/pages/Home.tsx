@@ -25,7 +25,7 @@ const coreModes = [
   {
     name: 'Enterprise Platform',
     description: 'The system of record for enterprise video operations. Manage global production at scale.',
-    metric: '4,500+ brands',
+    metric: 'Built for enterprise',
     color: '#6B9FFF',
     icon: '◆',
     tagline: 'Video operations hub',
