@@ -88,15 +88,73 @@ export default function Home() {
           overflow: 'hidden',
         }}
       >
-        {/* Background ambience */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: `radial-gradient(ellipse 80% 50% at 50% 50%, ${electric.core}06, transparent)`,
-            pointerEvents: 'none',
-          }}
-        />
+        {/* Background ambience - responds to hover */}
+        {(() => {
+          const activeColor = hoveredRow && hoveredIndex !== null
+            ? (hoveredRow === 'top' ? coreModes[hoveredIndex].color : videoApps[hoveredIndex].color)
+            : null
+          return (
+            <>
+              {/* Base ambient glow */}
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: activeColor
+                    ? `radial-gradient(ellipse 150% 100% at 50% 100%, ${activeColor}18, ${activeColor}08 40%, transparent 70%)`
+                    : `radial-gradient(ellipse 80% 50% at 50% 50%, ${electric.core}06, transparent)`,
+                  pointerEvents: 'none',
+                  transition: 'all 0.5s ease-out',
+                }}
+              />
+
+              {/* Electric wash overlay */}
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: activeColor
+                    ? `linear-gradient(180deg, transparent 0%, ${activeColor}06 30%, ${activeColor}10 50%, ${activeColor}06 70%, transparent 100%)`
+                    : 'transparent',
+                  pointerEvents: 'none',
+                  opacity: activeColor ? 1 : 0,
+                  transition: 'opacity 0.5s ease-out',
+                }}
+              />
+
+              {/* Top vignette with color */}
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: activeColor
+                    ? `radial-gradient(ellipse 100% 50% at 50% 0%, ${activeColor}10, transparent 50%)`
+                    : 'transparent',
+                  pointerEvents: 'none',
+                  opacity: activeColor ? 1 : 0,
+                  transition: 'opacity 0.5s ease-out',
+                }}
+              />
+
+              {/* Subtle electric noise/grain effect */}
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: activeColor
+                    ? `radial-gradient(circle at 30% 40%, ${activeColor}08 0%, transparent 25%),
+                       radial-gradient(circle at 70% 60%, ${activeColor}06 0%, transparent 20%),
+                       radial-gradient(circle at 50% 80%, ${activeColor}10 0%, transparent 30%)`
+                    : 'transparent',
+                  pointerEvents: 'none',
+                  opacity: activeColor ? 1 : 0,
+                  transition: 'opacity 0.5s ease-out',
+                  animation: activeColor ? 'ethereal-pulse 4s ease-in-out infinite' : 'none',
+                }}
+              />
+            </>
+          )
+        })()}
 
         {/* Floating particles */}
         <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
@@ -196,41 +254,41 @@ export default function Home() {
                         : '0 4px 20px rgba(0,0,0,0.2)',
                       position: 'relative',
                       textDecoration: 'none',
-                      overflow: 'hidden',
                     }}
                   >
-                    {/* Inner radiance - pulsing core glow */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        width: '150%',
-                        height: '150%',
-                        transform: 'translate(-50%, -50%)',
-                        background: `radial-gradient(ellipse at center, ${mode.color}20 0%, transparent 70%)`,
-                        opacity: isHovered ? 1 : 0,
-                        transition: 'opacity 0.4s',
-                        animation: isHovered ? 'inner-radiance 2s ease-in-out infinite' : 'none',
-                        pointerEvents: 'none',
-                      }}
-                    />
+                    {/* Inner effects container - clipped */}
+                    <div style={{ position: 'absolute', inset: 0, borderRadius: 16, overflow: 'hidden', pointerEvents: 'none' }}>
+                      {/* Inner radiance - pulsing core glow */}
+                      <div
+                        style={{
+                          position: 'absolute',
+                          top: '50%',
+                          left: '50%',
+                          width: '150%',
+                          height: '150%',
+                          transform: 'translate(-50%, -50%)',
+                          background: `radial-gradient(ellipse at center, ${mode.color}20 0%, transparent 70%)`,
+                          opacity: isHovered ? 1 : 0,
+                          transition: 'opacity 0.4s',
+                          animation: isHovered ? 'inner-radiance 2s ease-in-out infinite' : 'none',
+                        }}
+                      />
 
-                    {/* Shimmer edge effect */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        borderRadius: 16,
-                        background: isHovered
-                          ? `linear-gradient(90deg, transparent, ${mode.color}30, transparent)`
-                          : 'transparent',
-                        backgroundSize: '200% 100%',
-                        animation: isHovered ? 'border-shimmer 2s linear infinite' : 'none',
-                        opacity: isHovered ? 1 : 0,
-                        pointerEvents: 'none',
-                      }}
-                    />
+                      {/* Shimmer edge effect */}
+                      <div
+                        style={{
+                          position: 'absolute',
+                          inset: 0,
+                          borderRadius: 16,
+                          background: isHovered
+                            ? `linear-gradient(90deg, transparent, ${mode.color}30, transparent)`
+                            : 'transparent',
+                          backgroundSize: '200% 100%',
+                          animation: isHovered ? 'border-shimmer 2s linear infinite' : 'none',
+                          opacity: isHovered ? 1 : 0,
+                        }}
+                      />
+                    </div>
 
                     {/* Connector line to backbone */}
                     <div
@@ -249,21 +307,37 @@ export default function Home() {
                       }}
                     />
 
-                    {/* Energy pulse down connector */}
+                    {/* Energy pulses UP into card from backbone - dual offset */}
                     {isHovered && (
-                      <div
-                        style={{
-                          position: 'absolute',
-                          bottom: -68,
-                          left: '50%',
-                          transform: 'translateX(-50%)',
-                          width: 6,
-                          height: 20,
-                          background: `linear-gradient(to bottom, ${mode.color}, transparent)`,
-                          borderRadius: 3,
-                          animation: 'energy-flow-down 1s ease-out infinite',
-                        }}
-                      />
+                      <>
+                        <div
+                          style={{
+                            position: 'absolute',
+                            bottom: -68,
+                            left: 'calc(50% - 3px)',
+                            transform: 'translateX(-50%)',
+                            width: 4,
+                            height: 18,
+                            background: `linear-gradient(to top, transparent, ${mode.color})`,
+                            borderRadius: 2,
+                            animation: 'energy-flow-up 0.8s ease-out infinite',
+                          }}
+                        />
+                        <div
+                          style={{
+                            position: 'absolute',
+                            bottom: -68,
+                            left: 'calc(50% + 3px)',
+                            transform: 'translateX(-50%)',
+                            width: 4,
+                            height: 18,
+                            background: `linear-gradient(to top, transparent, ${mode.color}cc)`,
+                            borderRadius: 2,
+                            animation: 'energy-flow-up 0.8s ease-out infinite',
+                            animationDelay: '0.4s',
+                          }}
+                        />
+                      </>
                     )}
 
                     <div style={{ position: 'relative', zIndex: 1 }}>
@@ -540,41 +614,41 @@ export default function Home() {
                         : 'none',
                       position: 'relative',
                       textDecoration: 'none',
-                      overflow: 'hidden',
                     }}
                   >
-                    {/* Inner radiance - pulsing core glow */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        width: '180%',
-                        height: '180%',
-                        transform: 'translate(-50%, -50%)',
-                        background: `radial-gradient(ellipse at center, ${app.color}25 0%, transparent 60%)`,
-                        opacity: isHovered ? 1 : 0,
-                        transition: 'opacity 0.4s',
-                        animation: isHovered ? 'inner-radiance 2s ease-in-out infinite' : 'none',
-                        pointerEvents: 'none',
-                      }}
-                    />
+                    {/* Inner effects container - clipped */}
+                    <div style={{ position: 'absolute', inset: 0, borderRadius: 12, overflow: 'hidden', pointerEvents: 'none' }}>
+                      {/* Inner radiance - pulsing core glow */}
+                      <div
+                        style={{
+                          position: 'absolute',
+                          top: '50%',
+                          left: '50%',
+                          width: '180%',
+                          height: '180%',
+                          transform: 'translate(-50%, -50%)',
+                          background: `radial-gradient(ellipse at center, ${app.color}25 0%, transparent 60%)`,
+                          opacity: isHovered ? 1 : 0,
+                          transition: 'opacity 0.4s',
+                          animation: isHovered ? 'inner-radiance 2s ease-in-out infinite' : 'none',
+                        }}
+                      />
 
-                    {/* Shimmer edge effect */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        borderRadius: 12,
-                        background: isHovered
-                          ? `linear-gradient(90deg, transparent, ${app.color}25, transparent)`
-                          : 'transparent',
-                        backgroundSize: '200% 100%',
-                        animation: isHovered ? 'border-shimmer 1.5s linear infinite' : 'none',
-                        opacity: isHovered ? 1 : 0,
-                        pointerEvents: 'none',
-                      }}
-                    />
+                      {/* Shimmer edge effect */}
+                      <div
+                        style={{
+                          position: 'absolute',
+                          inset: 0,
+                          borderRadius: 12,
+                          background: isHovered
+                            ? `linear-gradient(90deg, transparent, ${app.color}25, transparent)`
+                            : 'transparent',
+                          backgroundSize: '200% 100%',
+                          animation: isHovered ? 'border-shimmer 1.5s linear infinite' : 'none',
+                          opacity: isHovered ? 1 : 0,
+                        }}
+                      />
+                    </div>
 
                     {/* Connector line to backbone */}
                     <div
@@ -593,21 +667,37 @@ export default function Home() {
                       }}
                     />
 
-                    {/* Energy pulse up connector */}
+                    {/* Energy pulses DOWN into card from backbone - dual offset */}
                     {isHovered && (
-                      <div
-                        style={{
-                          position: 'absolute',
-                          top: -64,
-                          left: '50%',
-                          transform: 'translateX(-50%)',
-                          width: 5,
-                          height: 16,
-                          background: `linear-gradient(to top, ${app.color}, transparent)`,
-                          borderRadius: 3,
-                          animation: 'energy-flow-up 0.8s ease-out infinite',
-                        }}
-                      />
+                      <>
+                        <div
+                          style={{
+                            position: 'absolute',
+                            top: -64,
+                            left: 'calc(50% - 2px)',
+                            transform: 'translateX(-50%)',
+                            width: 3,
+                            height: 14,
+                            background: `linear-gradient(to bottom, transparent, ${app.color})`,
+                            borderRadius: 2,
+                            animation: 'energy-flow-down 0.8s ease-out infinite',
+                          }}
+                        />
+                        <div
+                          style={{
+                            position: 'absolute',
+                            top: -64,
+                            left: 'calc(50% + 2px)',
+                            transform: 'translateX(-50%)',
+                            width: 3,
+                            height: 14,
+                            background: `linear-gradient(to bottom, transparent, ${app.color}cc)`,
+                            borderRadius: 2,
+                            animation: 'energy-flow-down 0.8s ease-out infinite',
+                            animationDelay: '0.35s',
+                          }}
+                        />
+                      </>
                     )}
 
                     <div style={{ position: 'relative', zIndex: 1 }}>
