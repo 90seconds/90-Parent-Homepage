@@ -33,7 +33,7 @@ export default function CustomerStory() {
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: `${BRAND}15`, padding: '6px 14px', borderRadius: 20, marginBottom: 24 }}>
               <span style={{ fontSize: 12, color: BRAND, fontWeight: 600, letterSpacing: '0.05em' }}>THE PROOF ENGINE</span>
             </div>
-            <h1 style={{ fontSize: 'clamp(48px, 6vw, 80px)', fontWeight: 700, lineHeight: 1, letterSpacing: '-0.04em', marginBottom: 24 }}>Customer Story<br />Platform</h1>
+            <h1 style={{ fontSize: 'clamp(48px, 6vw, 80px)', fontWeight: 700, lineHeight: 1, letterSpacing: '-0.04em', marginBottom: 24 }}>Customer Story<br />App</h1>
             <p style={{ fontSize: 'clamp(20px, 2.5vw, 28px)', color: BRAND, fontWeight: 500, marginBottom: 24 }}>Turn customers into proof.</p>
             <p style={{ fontSize: 18, color: '#a1a1aa', lineHeight: 1.7, maxWidth: 600, marginBottom: 40 }}>Productized B2B customer proof at scale. Capture testimonials, create case studies, and build a library of social proof that converts—all in one platform.</p>
             <div style={{ display: 'flex', gap: 16 }}>
