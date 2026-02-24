@@ -1,8 +1,17 @@
 import { useState, useEffect } from 'react'
 import { useVisibility } from '../hooks/useVisibility'
 
-const BRAND = '#3b82f6'
-const BRAND_LIGHT = '#60a5fa'
+const BRAND = '#6B9FFF'
+const BRAND_LIGHT = '#8FB8FF'
+
+const C = {
+  bg: '#08080A',
+  bg2: '#0D0D10',
+  tx: '#E8E6ED',
+  tS: '#8A8890',
+  tF: '#55535A',
+  brd: '#1F1F24',
+}
 
 export default function EnterprisePlatform() {
   const [ready, setReady] = useState(false)
@@ -21,7 +30,7 @@ export default function EnterprisePlatform() {
   ]
 
   return (
-    <div style={{ background: '#0a0a0f', minHeight: '100vh', color: '#fff' }}>
+    <div style={{ background: C.bg, minHeight: '100vh', color: C.tx }}>
       <section style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '120px 48px 80px', position: 'relative' }}>
         <div style={{ position: 'absolute', top: '30%', left: '50%', transform: 'translate(-50%, -50%)', width: 800, height: 800, background: `radial-gradient(circle, ${BRAND}15, transparent 60%)`, filter: 'blur(100px)', pointerEvents: 'none' }} />
 
@@ -49,7 +58,7 @@ export default function EnterprisePlatform() {
         </div>
       </section>
 
-      <section ref={featuresRef as React.RefObject<HTMLElement>} style={{ padding: '120px 48px', background: '#06060a' }}>
+      <section ref={featuresRef as React.RefObject<HTMLElement>} style={{ padding: '120px 48px', background: C.bg2 }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', opacity: featuresVis ? 1 : 0, transform: featuresVis ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.6s' }}>
           <div style={{ textAlign: 'center', marginBottom: 64 }}>
             <span style={{ fontSize: 13, color: BRAND_LIGHT, fontWeight: 600, letterSpacing: '0.15em', display: 'block', marginBottom: 16 }}>CAPABILITIES</span>
@@ -67,7 +76,7 @@ export default function EnterprisePlatform() {
         </div>
       </section>
 
-      <section ref={ctaRef as React.RefObject<HTMLElement>} style={{ padding: '140px 48px', background: '#0a0a0f' }}>
+      <section ref={ctaRef as React.RefObject<HTMLElement>} style={{ padding: '140px 48px', background: C.bg }}>
         <div style={{ maxWidth: 700, margin: '0 auto', textAlign: 'center', opacity: ctaVis ? 1 : 0, transform: ctaVis ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.6s' }}>
           <h2 style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 700, letterSpacing: '-0.03em', marginBottom: 24 }}>Ready to scale your video operations?</h2>
           <p style={{ fontSize: 20, color: '#a1a1aa', marginBottom: 48 }}>Join 4,500+ enterprise brands managing video at scale.</p>
@@ -78,7 +87,7 @@ export default function EnterprisePlatform() {
         </div>
       </section>
 
-      <footer style={{ padding: 48, background: '#06060a', borderTop: '1px solid #27272a' }}>
+      <footer style={{ padding: 48, background: C.bg2, borderTop: `1px solid ${C.brd}` }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}><span style={{ fontSize: 16, fontWeight: 700 }}>90 Seconds</span><span style={{ color: '#71717a' }}>/</span><span style={{ fontSize: 14, color: BRAND }}>Enterprise Platform</span></div>
           <div style={{ display: 'flex', gap: 32 }}><a href="#" style={{ fontSize: 14, color: '#a1a1aa', textDecoration: 'none' }}>Documentation</a><a href="#" style={{ fontSize: 14, color: '#a1a1aa', textDecoration: 'none' }}>Support</a></div>

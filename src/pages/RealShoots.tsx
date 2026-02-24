@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useVisibility } from '../hooks/useVisibility'
 
-const BRAND = '#22c55e'
-const BRAND_LIGHT = '#4ade80'
+const BRAND = '#4EDBA0'
+const BRAND_LIGHT = '#7AE8BA'
 
 export default function RealShoots() {
   const [ready, setReady] = useState(false)

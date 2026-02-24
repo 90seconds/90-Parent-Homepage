@@ -1,7 +1,16 @@
 import { useVisibility } from '../hooks/useVisibility'
 
-const BRAND = '#a855f7'
-const BRAND_LIGHT = '#c084fc'
+const BRAND = '#B39DFF'
+const BRAND_LIGHT = '#C4B5FD'
+
+const C = {
+  bg: '#08080A',
+  bg2: '#0D0D10',
+  tx: '#E8E6ED',
+  tS: '#8A8890',
+  tF: '#55535A',
+  brd: '#1F1F24',
+}
 
 const chapters = [
   { year: '2010', title: 'The Beginning', description: 'Tim Norton starts 90 Seconds in New Zealand with a simple idea: make professional video accessible to every business.', highlight: 'First platform launch' },
@@ -12,9 +21,9 @@ const chapters = [
 ]
 
 const dna = [
-  { strand: 'Agency DNA', traits: ['Creative excellence', 'Strategic thinking', 'Client obsession', 'Quality control'], color: '#ec4899', icon: '✦' },
-  { strand: 'Production DNA', traits: ['Global operations', 'Creator relationships', 'Logistics expertise', 'Real-world execution'], color: '#22c55e', icon: '◉' },
-  { strand: 'Product DNA', traits: ['Platform thinking', 'AI-first mindset', 'Scalable systems', 'Developer experience'], color: '#3b82f6', icon: '◆' },
+  { strand: 'Agency DNA', traits: ['Creative excellence', 'Strategic thinking', 'Client obsession', 'Quality control'], color: '#FF9DB3', icon: '✦' },
+  { strand: 'Production DNA', traits: ['Global operations', 'Creator relationships', 'Logistics expertise', 'Real-world execution'], color: '#4EDBA0', icon: '◉' },
+  { strand: 'Product DNA', traits: ['Platform thinking', 'AI-first mindset', 'Scalable systems', 'Developer experience'], color: '#8B9AFF', icon: '◆' },
 ]
 
 const convictions = [

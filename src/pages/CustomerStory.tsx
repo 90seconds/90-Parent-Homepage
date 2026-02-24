@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useVisibility } from '../hooks/useVisibility'
 
-const BRAND = '#f97316'
-const BRAND_LIGHT = '#fb923c'
+const BRAND = '#F0A878'
+const BRAND_LIGHT = '#F5C49D'
 
 export default function CustomerStory() {
   const [ready, setReady] = useState(false)

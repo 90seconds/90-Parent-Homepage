@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useVisibility } from '../hooks/useVisibility'
 
-const BRAND = '#14b8a6'
-const BRAND_LIGHT = '#2dd4bf'
+const BRAND = '#5EEAD4'
+const BRAND_LIGHT = '#99F6E4'
 
 export default function Affiliate() {
   const [ready, setReady] = useState(false)

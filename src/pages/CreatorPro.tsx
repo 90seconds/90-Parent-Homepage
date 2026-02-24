@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useVisibility } from '../hooks/useVisibility'
 
-const BRAND = '#fbbf24'
-const BRAND_LIGHT = '#fcd34d'
+const BRAND = '#FBBF24'
+const BRAND_LIGHT = '#FCD34D'
 
 export default function CreatorPro() {
   const [ready, setReady] = useState(false)

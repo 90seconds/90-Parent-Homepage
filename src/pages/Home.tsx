@@ -2,12 +2,22 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useVisibility } from '../hooks/useVisibility'
 
+// Softer, refined color palette
+const C = {
+  bg: '#08080A',
+  bg2: '#0D0D10',
+  tx: '#E8E6ED',
+  tS: '#8A8890',
+  tF: '#55535A',
+  brd: '#1F1F24',
+}
+
 const coreModes = [
   {
     name: 'Video Creation Agent',
     description: 'AI-led planning that transforms your brief into a production-ready video plan in days, not weeks',
     metric: '3 weeks → 3 days',
-    color: '#a855f7',
+    color: '#C9A0FF',
     icon: '⚡',
     tagline: 'AI-powered planning',
     path: '/video-creation-agent',
@@ -16,7 +26,7 @@ const coreModes = [
     name: 'Enterprise Platform',
     description: 'The system of record for enterprise video operations. Manage global production at scale.',
     metric: '4,500+ brands',
-    color: '#3b82f6',
+    color: '#6B9FFF',
     icon: '◆',
     tagline: 'Video operations hub',
     path: '/enterprise-platform',
@@ -25,7 +35,7 @@ const coreModes = [
     name: 'The Agency',
     description: 'Human strategists + AI operators delivering full-service video production and creative strategy',
     metric: 'Full service',
-    color: '#ec4899',
+    color: '#FF9DB3',
     icon: '✦',
     tagline: 'Managed video services',
     path: '/agency',
@@ -33,12 +43,12 @@ const coreModes = [
 ]
 
 const videoApps = [
-  { name: 'Content Agent', description: 'Manages your video library and repurposes existing assets automatically', metric: '10x faster', color: '#22d3ee', icon: '◈', path: '/content-agent' },
-  { name: 'Customer Story Platform', description: 'Productized B2B customer proof at scale', metric: '200+ stories/quarter', color: '#f97316', icon: '★', path: '/customer-story' },
-  { name: 'Real Shoots', description: 'Global production through local creator teams', metric: '110+ countries', color: '#22c55e', icon: '◉', path: '/real-shoots' },
-  { name: '90 AI Studio', description: 'Unified AI marketplace and operating layer', metric: 'Every AI model', color: '#8b5cf6', icon: '◎', path: '/ai-studio' },
-  { name: 'Creator Pro', description: 'SaaS platform for creators to run their video business', metric: 'Your business, powered', color: '#fbbf24', icon: '◇', path: '/creator-pro' },
-  { name: 'Affiliate', description: 'Sell video to your customers. We deliver. You earn.', metric: 'Partner program', color: '#14b8a6', icon: '◆', path: '/affiliate' },
+  { name: 'Content Agent', description: 'Manages your video library and repurposes existing assets automatically', metric: '10x faster', color: '#7DD3E8', icon: '◈', path: '/content-agent' },
+  { name: 'Customer Story Platform', description: 'Productized B2B customer proof at scale', metric: '200+ stories/quarter', color: '#F0A878', icon: '★', path: '/customer-story' },
+  { name: 'Real Shoots', description: 'Global production through local creator teams', metric: '110+ countries', color: '#4EDBA0', icon: '◉', path: '/real-shoots' },
+  { name: '90 AI Studio', description: 'Unified AI marketplace and operating layer', metric: 'Every AI model', color: '#A78BFA', icon: '◎', path: '/ai-studio' },
+  { name: 'Creator Pro', description: 'SaaS platform for creators to run their video business', metric: 'Your business, powered', color: '#FBBF24', icon: '◇', path: '/creator-pro' },
+  { name: 'Affiliate', description: 'Sell video to your customers. We deliver. You earn.', metric: 'Partner program', color: '#5EEAD4', icon: '◆', path: '/affiliate' },
 ]
 
 const stats = [
@@ -49,8 +59,8 @@ const stats = [
 ]
 
 const electric = {
-  core: '#00f0ff',
-  dim: '#0a4a4f',
+  core: '#8B9AFF',
+  dim: '#2A2A40',
 }
 
 export default function Home() {
@@ -73,7 +83,7 @@ export default function Home() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          padding: '100px 48px 60px',
+          padding: '120px 48px 80px',
           position: 'relative',
           overflow: 'hidden',
         }}
@@ -114,7 +124,7 @@ export default function Home() {
           <div
             style={{
               textAlign: 'center',
-              marginBottom: 48,
+              marginBottom: 64,
               opacity: ready ? 1 : 0,
               transform: ready ? 'translateY(0)' : 'translateY(40px)',
               transition: 'all 1s cubic-bezier(0.16,1,0.3,1)',
@@ -134,7 +144,7 @@ export default function Home() {
               <br />
               <span className="text-gradient">For Enterprise</span>
             </h1>
-            <p style={{ fontSize: 'clamp(18px, 2vw, 22px)', color: '#a1a1aa', maxWidth: 700, margin: '0 auto', lineHeight: 1.5 }}>
+            <p style={{ fontSize: 'clamp(18px, 2vw, 22px)', color: C.tS, maxWidth: 700, margin: '0 auto', lineHeight: 1.5 }}>
               Three core modes. Six specialized apps. One unified backbone.
             </p>
           </div>
@@ -148,15 +158,15 @@ export default function Home() {
               transition: 'all 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s',
             }}
           >
-            <span style={{ fontSize: 11, color: '#a855f7', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: 11, color: '#B39DFF', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
               Core Modes
             </span>
           </div>
 
           {/* Apps + Backbone Container */}
-          <div style={{ position: 'relative', marginBottom: 60 }}>
+          <div style={{ position: 'relative' }}>
             {/* TOP ROW - 3 Core Modes */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginBottom: 48, position: 'relative', zIndex: 2 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginBottom: 56, position: 'relative', zIndex: 2 }}>
               {coreModes.map((mode, i) => {
                 const isHovered = hoveredRow === 'top' && hoveredIndex === i
                 return (
@@ -172,35 +182,33 @@ export default function Home() {
                       setHoveredIndex(null)
                     }}
                     style={{
-                      background: isHovered ? `linear-gradient(180deg, ${mode.color}15, ${mode.color}05)` : 'linear-gradient(180deg, #0a0a0a, #111111)',
-                      border: `1px solid ${isHovered ? mode.color : '#222'}`,
-                      borderRadius: 20,
-                      padding: 28,
+                      background: isHovered ? `linear-gradient(180deg, ${mode.color}12, ${mode.color}04)` : C.bg2,
+                      border: `1px solid ${isHovered ? mode.color + '40' : C.brd}`,
+                      borderRadius: 16,
+                      padding: 24,
                       cursor: 'pointer',
                       transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
                       transform: ready ? (isHovered ? 'translateY(-12px) scale(1.02)' : 'translateY(0)') : 'translateY(30px)',
                       opacity: ready ? 1 : 0,
                       transitionDelay: `${0.1 + i * 0.08}s`,
-                      boxShadow: isHovered ? `0 20px 60px ${mode.color}30, 0 0 40px ${mode.color}20` : '0 4px 20px rgba(0,0,0,0.3)',
+                      boxShadow: isHovered ? `0 16px 48px ${mode.color}20` : '0 4px 20px rgba(0,0,0,0.2)',
                       position: 'relative',
                       textDecoration: 'none',
                     }}
                   >
-                    {/* Energy beam connector */}
+                    {/* Connector line to backbone */}
                     <div
                       style={{
                         position: 'absolute',
-                        bottom: -48,
+                        bottom: isHovered ? -68 : -56,
                         left: '50%',
                         transform: 'translateX(-50%)',
-                        width: isHovered ? 4 : 2,
-                        height: 48,
+                        width: isHovered ? 2 : 1,
+                        height: isHovered ? 68 : 56,
                         background: isHovered
-                          ? `linear-gradient(to bottom, ${mode.color}, ${electric.core})`
-                          : `linear-gradient(to bottom, ${electric.dim}, ${electric.core}40)`,
-                        borderRadius: 2,
-                        transition: 'all 0.3s',
-                        boxShadow: isHovered ? `0 0 20px ${mode.color}, 0 0 40px ${electric.core}` : 'none',
+                          ? `linear-gradient(to bottom, ${mode.color}, ${mode.color})`
+                          : `linear-gradient(to bottom, ${C.brd}, ${electric.core}60)`,
+                        transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
                       }}
                     />
 
@@ -227,17 +235,17 @@ export default function Home() {
                           <div style={{ fontSize: 11, color: mode.color, fontWeight: 500, marginBottom: 2, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                             {mode.tagline}
                           </div>
-                          <div style={{ fontSize: 18, fontWeight: 700, color: 'white' }}>{mode.name}</div>
+                          <div style={{ fontSize: 16, fontWeight: 600, color: C.tx }}>{mode.name}</div>
                         </div>
                       </div>
-                      <p style={{ fontSize: 14, color: isHovered ? '#a1a1aa' : '#71717a', lineHeight: 1.6, marginBottom: 16, transition: 'color 0.3s' }}>
+                      <p style={{ fontSize: 14, color: isHovered ? C.tS : C.tF, lineHeight: 1.6, marginBottom: 14, transition: 'color 0.3s' }}>
                         {mode.description}
                       </p>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ fontSize: 14, color: mode.color, fontWeight: 600, filter: isHovered ? `drop-shadow(0 0 8px ${mode.color})` : 'none' }}>
+                        <span style={{ fontSize: 13, color: mode.color, fontWeight: 550 }}>
                           {mode.metric}
                         </span>
-                        <span style={{ fontSize: 13, color: '#71717a' }}>Learn more →</span>
+                        <span style={{ fontSize: 12, color: C.tF }}>Learn more →</span>
                       </div>
                     </div>
                   </Link>
@@ -246,134 +254,174 @@ export default function Home() {
             </div>
 
             {/* THE BACKBONE */}
-            <div style={{ position: 'relative', display: 'flex', alignItems: 'center', padding: '0 20px' }}>
+            {(() => {
+              // Get the active color when hovering
+              const activeColor = hoveredRow === 'top' && hoveredIndex !== null
+                ? coreModes[hoveredIndex].color
+                : hoveredRow === 'bottom' && hoveredIndex !== null
+                ? videoApps[hoveredIndex].color
+                : null
+
+              return (
+                <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                  <div
+                    style={{
+                      position: 'absolute',
+                      left: -100,
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      fontSize: 11,
+                      fontWeight: 600,
+                      letterSpacing: '0.15em',
+                      color: activeColor || C.tF,
+                      opacity: ready ? 1 : 0,
+                      transition: 'all 0.3s',
+                    }}
+                  >
+                    BACKBONE
+                  </div>
+
+                  <div
+                    style={{
+                      flex: 1,
+                      height: 8,
+                      background: activeColor
+                        ? `linear-gradient(90deg, ${C.brd}, ${activeColor}60, ${activeColor}60, ${C.brd})`
+                        : `linear-gradient(90deg, ${C.brd}, ${electric.core}30, ${electric.core}30, ${C.brd})`,
+                      borderRadius: 4,
+                      position: 'relative',
+                      opacity: ready ? 1 : 0,
+                      transition: 'all 0.3s',
+                      boxShadow: activeColor ? `0 0 20px ${activeColor}40` : 'none',
+                    }}
+                  >
+                    {/* Inner glow when active */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        borderRadius: 4,
+                        background: activeColor
+                          ? `linear-gradient(90deg, transparent 10%, ${activeColor}80 50%, transparent 90%)`
+                          : 'transparent',
+                        opacity: activeColor ? 1 : 0,
+                        transition: 'opacity 0.3s',
+                      }}
+                    />
+
+                    {/* Connection nodes for TOP row - using calc for precise positioning */}
+                    {coreModes.map((mode, i) => {
+                      const isHovered = hoveredRow === 'top' && hoveredIndex === i
+                      // calc positions: card centers accounting for 24px gaps
+                      const calcPositions = [
+                        'calc((100% - 48px) / 6)',
+                        '50%',
+                        'calc(100% - (100% - 48px) / 6)'
+                      ]
+                      return (
+                        <div
+                          key={`top-${i}`}
+                          style={{
+                            position: 'absolute',
+                            left: calcPositions[i],
+                            top: -4,
+                            transform: 'translateX(-50%)',
+                            width: isHovered ? 16 : 10,
+                            height: isHovered ? 16 : 10,
+                            borderRadius: '50%',
+                            background: isHovered ? mode.color : (activeColor || electric.core),
+                            boxShadow: isHovered ? `0 0 20px ${mode.color}` : `0 0 6px ${activeColor || electric.core}`,
+                            transition: 'all 0.3s',
+                            zIndex: 5,
+                          }}
+                        />
+                      )
+                    })}
+
+                    {/* Connection nodes for BOTTOM row - using calc for precise positioning */}
+                    {videoApps.map((app, i) => {
+                      const isHovered = hoveredRow === 'bottom' && hoveredIndex === i
+                      // calc positions: card centers accounting for 12px gaps (5 gaps total = 60px)
+                      const calcPositions = [
+                        'calc((100% - 60px) / 12)',
+                        'calc((100% - 60px) / 12 + (100% - 60px) / 6 + 12px)',
+                        'calc((100% - 60px) / 12 + 2 * (100% - 60px) / 6 + 24px)',
+                        'calc((100% - 60px) / 12 + 3 * (100% - 60px) / 6 + 36px)',
+                        'calc((100% - 60px) / 12 + 4 * (100% - 60px) / 6 + 48px)',
+                        'calc(100% - (100% - 60px) / 12)',
+                      ]
+                      return (
+                        <div
+                          key={`bottom-${i}`}
+                          style={{
+                            position: 'absolute',
+                            left: calcPositions[i],
+                            bottom: -4,
+                            transform: 'translateX(-50%)',
+                            width: isHovered ? 14 : 8,
+                            height: isHovered ? 14 : 8,
+                            borderRadius: '50%',
+                            background: isHovered ? app.color : (activeColor || electric.core),
+                            boxShadow: isHovered ? `0 0 16px ${app.color}` : `0 0 4px ${activeColor || electric.core}`,
+                            transition: 'all 0.3s',
+                            zIndex: 5,
+                          }}
+                        />
+                      )
+                    })}
+
+                    {/* Energy surge when hovering */}
+                    {activeColor && (
+                      <div
+                        key={`surge-${hoveredRow}-${hoveredIndex}`}
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          width: '100%',
+                          height: '100%',
+                          background: `linear-gradient(90deg, transparent, ${activeColor}, transparent)`,
+                          borderRadius: 4,
+                          animation: 'surge-pulse 0.6s ease-out',
+                        }}
+                      />
+                    )}
+
+                    {/* Ambient traveling pulse */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        width: 100,
+                        height: '100%',
+                        background: `linear-gradient(90deg, transparent, ${activeColor || electric.core}40, transparent)`,
+                        borderRadius: 4,
+                        animation: 'travel 5s linear infinite',
+                      }}
+                    />
+                  </div>
+                </div>
+              )
+            })()}
+
+            {/* BOTTOM ROW - 6 Video Apps */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 12, position: 'relative', zIndex: 2, marginTop: 56 }}>
+              {/* VIDEO APPS Label - positioned absolutely */}
               <div
                 style={{
                   position: 'absolute',
-                  left: -100,
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  fontSize: 12,
-                  fontWeight: 700,
-                  letterSpacing: '0.2em',
-                  color: electric.core,
-                  textShadow: `0 0 30px ${electric.core}`,
+                  top: -32,
+                  left: '50%',
+                  transform: 'translateX(-50%)',
                   opacity: ready ? 1 : 0,
-                  transition: 'opacity 0.8s 0.5s',
+                  transition: 'all 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s',
+                  zIndex: 0,
                 }}
               >
-                BACKBONE
+                <span style={{ fontSize: 10, color: C.tF, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+                  Specialized Video Apps
+                </span>
               </div>
-
-              <div
-                style={{
-                  flex: 1,
-                  height: 14,
-                  background: `linear-gradient(90deg, ${electric.dim}, ${electric.core}50, ${electric.core}50, ${electric.dim})`,
-                  borderRadius: 7,
-                  position: 'relative',
-                  animation: ready ? 'backbone-glow 3s ease-in-out infinite' : 'none',
-                  opacity: ready ? 1 : 0,
-                  transition: 'opacity 0.8s 0.4s',
-                }}
-              >
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 4,
-                    left: 0,
-                    right: 0,
-                    height: 6,
-                    background: `linear-gradient(90deg, transparent 5%, ${electric.core}80 15%, ${electric.core} 50%, ${electric.core}80 85%, transparent 95%)`,
-                    borderRadius: 3,
-                    animation: 'pulse-backbone 2s ease-in-out infinite',
-                  }}
-                />
-
-                {/* Connection nodes for TOP row */}
-                {coreModes.map((mode, i) => {
-                  const isHovered = hoveredRow === 'top' && hoveredIndex === i
-                  const leftPos = ((i + 0.5) / 3) * 100
-                  return (
-                    <div
-                      key={`top-${i}`}
-                      style={{
-                        position: 'absolute',
-                        left: `${leftPos}%`,
-                        top: -7,
-                        transform: 'translateX(-50%)',
-                        width: isHovered ? 22 : 16,
-                        height: isHovered ? 22 : 16,
-                        borderRadius: '50%',
-                        background: isHovered ? mode.color : electric.core,
-                        boxShadow: isHovered
-                          ? `0 0 25px ${mode.color}, 0 0 50px ${mode.color}`
-                          : `0 0 15px ${electric.core}, 0 0 30px ${electric.core}50`,
-                        transition: 'all 0.3s',
-                        zIndex: 5,
-                      }}
-                    />
-                  )
-                })}
-
-                {/* Connection nodes for BOTTOM row */}
-                {videoApps.map((app, i) => {
-                  const isHovered = hoveredRow === 'bottom' && hoveredIndex === i
-                  const leftPos = ((i + 0.5) / 6) * 100
-                  return (
-                    <div
-                      key={`bottom-${i}`}
-                      style={{
-                        position: 'absolute',
-                        left: `${leftPos}%`,
-                        bottom: -7,
-                        transform: 'translateX(-50%)',
-                        width: isHovered ? 18 : 12,
-                        height: isHovered ? 18 : 12,
-                        borderRadius: '50%',
-                        background: isHovered ? app.color : electric.core,
-                        boxShadow: isHovered
-                          ? `0 0 20px ${app.color}, 0 0 40px ${app.color}`
-                          : `0 0 12px ${electric.core}, 0 0 24px ${electric.core}50`,
-                        transition: 'all 0.3s',
-                        zIndex: 5,
-                      }}
-                    />
-                  )
-                })}
-
-                {/* Traveling energy pulse */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    width: 200,
-                    height: '100%',
-                    background: `linear-gradient(90deg, transparent, ${electric.core}90, transparent)`,
-                    borderRadius: 7,
-                    animation: 'travel 3s linear infinite',
-                  }}
-                />
-              </div>
-            </div>
-
-            {/* VIDEO APPS Label */}
-            <div
-              style={{
-                textAlign: 'center',
-                marginTop: 40,
-                marginBottom: 20,
-                opacity: ready ? 1 : 0,
-                transition: 'all 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s',
-              }}
-            >
-              <span style={{ fontSize: 10, color: '#71717a', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-                Specialized Video Apps
-              </span>
-            </div>
-
-            {/* BOTTOM ROW - 6 Video Apps */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 12, position: 'relative', zIndex: 2 }}>
               {videoApps.map((app, i) => {
                 const isHovered = hoveredRow === 'bottom' && hoveredIndex === i
                 return (
@@ -389,35 +437,33 @@ export default function Home() {
                       setHoveredIndex(null)
                     }}
                     style={{
-                      background: isHovered ? `linear-gradient(0deg, ${app.color}15, ${app.color}05)` : 'linear-gradient(180deg, #0a0a0a, #111111)',
-                      border: `1px solid ${isHovered ? app.color : '#222'}`,
-                      borderRadius: 16,
-                      padding: 20,
+                      background: isHovered ? `linear-gradient(0deg, ${app.color}12, ${app.color}04)` : C.bg2,
+                      border: `1px solid ${isHovered ? app.color + '40' : C.brd}`,
+                      borderRadius: 12,
+                      padding: 18,
                       cursor: 'pointer',
                       transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
                       transform: ready ? (isHovered ? 'translateY(8px) scale(1.02)' : 'translateY(0)') : 'translateY(-30px)',
                       opacity: ready ? 1 : 0,
                       transitionDelay: `${0.5 + i * 0.06}s`,
-                      boxShadow: isHovered ? `0 -20px 60px ${app.color}30, 0 0 40px ${app.color}20` : '0 4px 20px rgba(0,0,0,0.3)',
+                      boxShadow: isHovered ? `0 -12px 40px ${app.color}15` : 'none',
                       position: 'relative',
                       textDecoration: 'none',
                     }}
                   >
-                    {/* Energy beam connector UP */}
+                    {/* Connector line to backbone */}
                     <div
                       style={{
                         position: 'absolute',
-                        top: -40,
+                        top: isHovered ? -64 : -56,
                         left: '50%',
                         transform: 'translateX(-50%)',
-                        width: isHovered ? 4 : 2,
-                        height: 40,
+                        width: isHovered ? 2 : 1,
+                        height: isHovered ? 64 : 56,
                         background: isHovered
-                          ? `linear-gradient(to top, ${app.color}, ${electric.core})`
-                          : `linear-gradient(to top, ${electric.dim}, ${electric.core}40)`,
-                        borderRadius: 2,
-                        transition: 'all 0.3s',
-                        boxShadow: isHovered ? `0 0 20px ${app.color}, 0 0 40px ${electric.core}` : 'none',
+                          ? `linear-gradient(to top, ${app.color}, ${app.color})`
+                          : `linear-gradient(to top, ${C.brd}, ${electric.core}60)`,
+                        transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
                       }}
                     />
 
@@ -440,12 +486,12 @@ export default function Home() {
                             {app.icon}
                           </span>
                         </div>
-                        <div style={{ fontSize: 13, fontWeight: 600, color: 'white' }}>{app.name}</div>
+                        <div style={{ fontSize: 13, fontWeight: 550, color: C.tx }}>{app.name}</div>
                       </div>
-                      <p style={{ fontSize: 11, color: isHovered ? '#a1a1aa' : '#71717a', lineHeight: 1.5, marginBottom: 10, transition: 'color 0.3s' }}>
+                      <p style={{ fontSize: 11, color: isHovered ? C.tS : C.tF, lineHeight: 1.5, marginBottom: 8, transition: 'color 0.3s' }}>
                         {app.description}
                       </p>
-                      <div style={{ fontSize: 11, color: app.color, fontWeight: 600, filter: isHovered ? `drop-shadow(0 0 6px ${app.color})` : 'none' }}>
+                      <div style={{ fontSize: 11, color: app.color, fontWeight: 550 }}>
                         {app.metric}
                       </div>
                     </div>
@@ -455,31 +501,33 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Stats */}
-          <div
-            style={{
-              display: 'flex',
-              gap: 48,
-              justifyContent: 'center',
-              opacity: ready ? 1 : 0,
-              transform: ready ? 'translateY(0)' : 'translateY(20px)',
-              transition: 'all 0.8s cubic-bezier(0.16,1,0.3,1) 0.8s',
-            }}
-          >
-            {stats.map((stat) => (
-              <div key={stat.label} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 32, fontWeight: 700, color: 'white' }}>{stat.value}</div>
-                <div style={{ fontSize: 13, color: '#71717a' }}>{stat.label}</div>
-              </div>
-            ))}
-          </div>
+        </div>
+      </section>
+
+      {/* Stats Section - Below the fold */}
+      <section style={{ padding: '80px 48px', background: C.bg2 }}>
+        <div
+          style={{
+            maxWidth: 1000,
+            margin: '0 auto',
+            display: 'flex',
+            gap: 64,
+            justifyContent: 'center',
+          }}
+        >
+          {stats.map((stat) => (
+            <div key={stat.label} style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: 36, fontWeight: 600, color: C.tx, letterSpacing: '-0.02em', marginBottom: 4 }}>{stat.value}</div>
+              <div style={{ fontSize: 13, color: C.tF }}>{stat.label}</div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* How It Works */}
       <section
         ref={howItWorksRef as React.RefObject<HTMLElement>}
-        style={{ padding: '120px 48px', background: '#0a0a0a' }}
+        style={{ padding: '120px 48px', background: C.bg }}
       >
         <div
           style={{
@@ -491,43 +539,42 @@ export default function Home() {
           }}
         >
           <div style={{ textAlign: 'center', marginBottom: 64 }}>
-            <span style={{ fontSize: 12, color: '#a855f7', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', display: 'block', marginBottom: 16 }}>
+            <span style={{ fontSize: 12, color: '#B39DFF', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', display: 'block', marginBottom: 16 }}>
               How It Works
             </span>
-            <h2 style={{ fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 700, color: 'white', letterSpacing: '-0.03em', marginBottom: 20 }}>
+            <h2 style={{ fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 600, color: C.tx, letterSpacing: '-0.03em', marginBottom: 20 }}>
               One platform, multiple paths
             </h2>
-            <p style={{ fontSize: 18, color: '#a1a1aa', maxWidth: 600, margin: '0 auto' }}>
+            <p style={{ fontSize: 18, color: C.tS, maxWidth: 600, margin: '0 auto' }}>
               Choose your entry point based on your needs. Everything connects.
             </p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32, position: 'relative' }}>
-            <div style={{ position: 'absolute', top: 48, left: '16.67%', right: '16.67%', height: 2, background: '#222', zIndex: 0 }} />
+            <div style={{ position: 'absolute', top: 48, left: '16.67%', right: '16.67%', height: 2, background: C.brd, zIndex: 0 }} />
             {[
-              { num: '01', title: 'Self-Serve', desc: 'Sign up, access the platform, use the apps directly. Full control over your video operations.', color: '#3b82f6' },
-              { num: '02', title: 'Guided', desc: 'Work with our team to onboard, configure, and optimize for your specific needs.', color: '#a855f7' },
-              { num: '03', title: 'Managed', desc: "Our agency runs everything. Strategy, creative, production, delivery. You approve, we execute.", color: '#ec4899' },
+              { num: '01', title: 'Self-Serve', desc: 'Sign up, access the platform, use the apps directly. Full control over your video operations.', color: '#8B9AFF' },
+              { num: '02', title: 'Guided', desc: 'Work with our team to onboard, configure, and optimize for your specific needs.', color: '#B39DFF' },
+              { num: '03', title: 'Managed', desc: "Our agency runs everything. Strategy, creative, production, delivery. You approve, we execute.", color: '#FF9DB3' },
             ].map((item) => (
               <div key={item.num} style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
                 <div
                   style={{
-                    width: 96,
-                    height: 96,
+                    width: 80,
+                    height: 80,
                     borderRadius: '50%',
-                    background: '#030303',
-                    border: `2px solid ${item.color}40`,
+                    background: C.bg2,
+                    border: `1px solid ${item.color}30`,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     margin: '0 auto 24px',
-                    boxShadow: `0 0 30px ${item.color}15`,
                   }}
                 >
-                  <span style={{ fontSize: 28, fontWeight: 700, color: item.color }}>{item.num}</span>
+                  <span style={{ fontSize: 24, fontWeight: 600, color: item.color }}>{item.num}</span>
                 </div>
-                <h3 style={{ fontSize: 20, fontWeight: 700, color: 'white', marginBottom: 12 }}>{item.title}</h3>
-                <p style={{ fontSize: 14, color: '#a1a1aa', lineHeight: 1.6 }}>{item.desc}</p>
+                <h3 style={{ fontSize: 18, fontWeight: 600, color: C.tx, marginBottom: 12 }}>{item.title}</h3>
+                <p style={{ fontSize: 14, color: C.tS, lineHeight: 1.6 }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -535,10 +582,10 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section ref={ctaRef as React.RefObject<HTMLElement>} style={{ padding: '140px 48px', background: '#030303' }}>
+      <section ref={ctaRef as React.RefObject<HTMLElement>} style={{ padding: '140px 48px', background: C.bg }}>
         <div
           style={{
-            maxWidth: 800,
+            maxWidth: 700,
             margin: '0 auto',
             textAlign: 'center',
             opacity: ctaVis ? 1 : 0,
@@ -546,31 +593,33 @@ export default function Home() {
             transition: 'all 0.6s',
           }}
         >
-          <div
-            style={{
-              width: 80,
-              height: 80,
-              borderRadius: '50%',
-              background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(168, 85, 247, 0.05))',
-              border: '2px solid rgba(168, 85, 247, 0.3)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto 32px',
-            }}
-          >
-            <div style={{ width: 16, height: 16, borderRadius: '50%', background: '#a855f7', boxShadow: '0 0 20px #a855f7' }} />
-          </div>
-
-          <h2 style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 700, color: 'white', letterSpacing: '-0.03em', marginBottom: 24 }}>
+          <h2 style={{ fontSize: 'clamp(32px, 5vw, 48px)', fontWeight: 600, color: C.tx, letterSpacing: '-0.03em', marginBottom: 20 }}>
             Ready to build?
           </h2>
-          <p style={{ fontSize: 20, color: '#a1a1aa', marginBottom: 48, lineHeight: 1.6 }}>Start with any mode. Expand as you grow.</p>
-          <div style={{ display: 'flex', gap: 16, justifyContent: 'center' }}>
-            <button className="btn-primary" style={{ padding: '16px 36px', fontSize: 16 }}>
-              Get started free
+          <p style={{ fontSize: 17, color: C.tS, marginBottom: 40, lineHeight: 1.6 }}>Start with any mode. Expand as you grow.</p>
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center' }}>
+            <button style={{
+              background: '#F5F5F5',
+              color: C.bg,
+              border: 'none',
+              borderRadius: 8,
+              padding: '12px 28px',
+              fontSize: 14,
+              fontWeight: 600,
+              cursor: 'pointer',
+            }}>
+              Get started
             </button>
-            <button className="btn-secondary" style={{ padding: '16px 36px', fontSize: 16 }}>
+            <button style={{
+              background: 'transparent',
+              color: C.tx,
+              border: `1px solid ${C.brd}`,
+              borderRadius: 8,
+              padding: '12px 28px',
+              fontSize: 14,
+              fontWeight: 500,
+              cursor: 'pointer',
+            }}>
               Talk to sales
             </button>
           </div>
@@ -578,25 +627,25 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer style={{ padding: '64px 48px', background: '#0a0a0a', borderTop: '1px solid #222' }}>
+      <footer style={{ padding: '48px 40px', background: C.bg2, borderTop: `1px solid ${C.brd}` }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <div>
-            <span style={{ fontSize: 18, fontWeight: 700, color: 'white', display: 'block', marginBottom: 8 }}>90 Seconds</span>
-            <span style={{ fontSize: 14, color: '#71717a' }}>The video infrastructure for enterprise.</span>
+            <span style={{ fontSize: 15, fontWeight: 700, color: C.tx, display: 'block', marginBottom: 6 }}>90 Seconds</span>
+            <span style={{ fontSize: 13, color: C.tF }}>The video infrastructure for enterprise.</span>
           </div>
-          <div style={{ display: 'flex', gap: 64 }}>
+          <div style={{ display: 'flex', gap: 48 }}>
             {[
               { title: 'Core Modes', items: ['Video Creation Agent', 'Enterprise Platform', 'The Agency'] },
               { title: 'Video Apps', items: ['Content Agent', 'Customer Stories', 'Real Shoots', '90 AI Studio', 'Creator Pro', 'Affiliate'] },
               { title: 'Company', items: ['About', 'Careers', 'Press', 'Contact'] },
             ].map((col) => (
               <div key={col.title}>
-                <span style={{ fontSize: 11, color: '#71717a', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: 16 }}>
+                <span style={{ fontSize: 11, color: C.tF, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: 14 }}>
                   {col.title}
                 </span>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   {col.items.map((it) => (
-                    <a key={it} href="#" style={{ fontSize: 14, color: '#a1a1aa', textDecoration: 'none' }}>
+                    <a key={it} href="#" style={{ fontSize: 13, color: C.tS, textDecoration: 'none' }}>
                       {it}
                     </a>
                   ))}

@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
+// Softer, more refined color palette
 const products = [
-  { name: 'Video Creation Agent', path: '/video-creation-agent', color: '#a855f7' },
-  { name: 'Enterprise Platform', path: '/enterprise-platform', color: '#3b82f6' },
-  { name: 'The Agency', path: '/agency', color: '#ec4899' },
-  { name: 'Content Agent', path: '/content-agent', color: '#22d3ee' },
-  { name: 'Customer Story', path: '/customer-story', color: '#f97316' },
-  { name: 'Real Shoots', path: '/real-shoots', color: '#22c55e' },
-  { name: '90 AI Studio', path: '/ai-studio', color: '#8b5cf6' },
-  { name: 'Creator Pro', path: '/creator-pro', color: '#fbbf24' },
-  { name: 'Affiliate', path: '/affiliate', color: '#14b8a6' },
+  { name: 'Video Creation Agent', path: '/video-creation-agent', color: '#C9A0FF' },
+  { name: 'Enterprise Platform', path: '/enterprise-platform', color: '#6B9FFF' },
+  { name: 'The Agency', path: '/agency', color: '#FF9DB3' },
+  { name: 'Content Agent', path: '/content-agent', color: '#7DD3E8' },
+  { name: 'Customer Story', path: '/customer-story', color: '#F0A878' },
+  { name: 'Real Shoots', path: '/real-shoots', color: '#4EDBA0' },
+  { name: '90 AI Studio', path: '/ai-studio', color: '#A78BFA' },
+  { name: 'Creator Pro', path: '/creator-pro', color: '#FBBF24' },
+  { name: 'Affiliate', path: '/affiliate', color: '#5EEAD4' },
 ]
 
 export default function Header() {
@@ -24,7 +25,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close dropdown on route change
   useEffect(() => {
     setProductsOpen(false)
   }, [location])
@@ -37,57 +37,23 @@ export default function Header() {
         left: 0,
         right: 0,
         zIndex: 100,
-        height: 72,
+        height: 56,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '0 48px',
-        background: scrolled ? 'rgba(3,3,3,0.95)' : 'transparent',
-        backdropFilter: scrolled ? 'saturate(180%) blur(20px)' : 'none',
-        borderBottom: scrolled ? '1px solid #222' : 'none',
-        transition: 'all 0.3s ease',
+        padding: '0 40px',
+        background: scrolled ? 'rgba(12, 11, 14, 0.88)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.08)' : 'none',
+        transition: 'all 0.35s',
       }}
     >
-      {/* Logo */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 48 }}>
-        <Link
-          to="/"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 12,
-            textDecoration: 'none',
-          }}
-        >
-          <div
-            style={{
-              width: 40,
-              height: 40,
-              borderRadius: 10,
-              background: 'linear-gradient(135deg, #a855f7 0%, #8b5cf6 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 4px 20px rgba(168, 85, 247, 0.3)',
-            }}
-          >
-            <span style={{ fontSize: 18, fontWeight: 800, color: 'white' }}>90</span>
-          </div>
-          <span
-            style={{
-              fontSize: 20,
-              fontWeight: 700,
-              color: 'white',
-              letterSpacing: '-0.02em',
-            }}
-          >
-            90 Seconds
-          </span>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <img src="/logo-white.png" alt="90 Seconds" style={{ height: 24 }} />
         </Link>
 
-        {/* Nav Links */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          {/* Products Dropdown */}
+        <nav style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
           <div
             style={{ position: 'relative' }}
             onMouseEnter={() => setProductsOpen(true)}
@@ -97,156 +63,132 @@ export default function Header() {
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: '#a1a1aa',
-                fontSize: 14,
-                fontWeight: 500,
-                padding: '10px 16px',
-                borderRadius: 8,
+                color: 'rgba(255,255,255,0.6)',
+                fontSize: 13,
+                fontWeight: 420,
+                padding: '8px 12px',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                gap: 6,
+                gap: 5,
                 transition: 'color 0.2s',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#a1a1aa')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.6)')}
             >
               Products
               <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
+                width="10"
+                height="10"
+                viewBox="0 0 10 10"
                 fill="none"
                 style={{
                   transform: productsOpen ? 'rotate(180deg)' : 'rotate(0)',
                   transition: 'transform 0.2s',
                 }}
               >
-                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                <path d="M2.5 4L5 6.5L7.5 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
               </svg>
             </button>
 
-            {/* Dropdown */}
             {productsOpen && (
               <div
                 style={{
                   position: 'absolute',
                   top: '100%',
-                  left: 0,
-                  marginTop: 8,
-                  background: 'rgba(10, 10, 10, 0.98)',
-                  border: '1px solid #222',
-                  borderRadius: 16,
-                  padding: 12,
-                  minWidth: 280,
-                  boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+                  left: -8,
+                  marginTop: 4,
+                  background: 'rgba(18, 17, 22, 0.96)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  borderRadius: 12,
+                  padding: 8,
+                  minWidth: 220,
+                  boxShadow: '0 16px 48px rgba(0,0,0,0.4)',
                   backdropFilter: 'blur(20px)',
                 }}
               >
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                  {products.map((product) => (
-                    <Link
-                      key={product.path}
-                      to={product.path}
+                {products.map((product) => (
+                  <Link
+                    key={product.path}
+                    to={product.path}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 10,
+                      padding: '10px 12px',
+                      borderRadius: 8,
+                      textDecoration: 'none',
+                      transition: 'background 0.15s',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.06)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+                  >
+                    <div
                       style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 12,
-                        padding: '12px 16px',
-                        borderRadius: 10,
-                        textDecoration: 'none',
-                        transition: 'background 0.2s',
+                        width: 8,
+                        height: 8,
+                        borderRadius: '50%',
+                        background: product.color,
                       }}
-                      onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.05)')}
-                      onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
-                    >
-                      <div
-                        style={{
-                          width: 10,
-                          height: 10,
-                          borderRadius: '50%',
-                          background: product.color,
-                          boxShadow: `0 0 10px ${product.color}50`,
-                        }}
-                      />
-                      <span style={{ fontSize: 14, color: 'white', fontWeight: 500 }}>{product.name}</span>
-                    </Link>
-                  ))}
-                </div>
+                    />
+                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', fontWeight: 450 }}>{product.name}</span>
+                  </Link>
+                ))}
               </div>
             )}
           </div>
 
-          <Link
-            to="/about"
-            style={{
-              color: '#a1a1aa',
-              fontSize: 14,
-              fontWeight: 500,
-              padding: '10px 16px',
-              borderRadius: 8,
-              textDecoration: 'none',
-              transition: 'color 0.2s',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#a1a1aa')}
-          >
-            About
-          </Link>
-
-          <a
-            href="#"
-            style={{
-              color: '#a1a1aa',
-              fontSize: 14,
-              fontWeight: 500,
-              padding: '10px 16px',
-              borderRadius: 8,
-              textDecoration: 'none',
-              transition: 'color 0.2s',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#a1a1aa')}
-          >
-            Enterprise
-          </a>
-
-          <a
-            href="#"
-            style={{
-              color: '#a1a1aa',
-              fontSize: 14,
-              fontWeight: 500,
-              padding: '10px 16px',
-              borderRadius: 8,
-              textDecoration: 'none',
-              transition: 'color 0.2s',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#a1a1aa')}
-          >
-            Developers
-          </a>
+          {['About', 'Enterprise', 'Creators'].map((item) => (
+            <Link
+              key={item}
+              to={item === 'About' ? '/about' : '#'}
+              style={{
+                color: 'rgba(255,255,255,0.6)',
+                fontSize: 13,
+                fontWeight: 420,
+                padding: '8px 12px',
+                textDecoration: 'none',
+                transition: 'color 0.2s',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.6)')}
+            >
+              {item}
+            </Link>
+          ))}
         </nav>
       </div>
 
-      {/* Right Side */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
         <a
           href="#"
           style={{
-            color: '#a1a1aa',
-            fontSize: 14,
-            fontWeight: 500,
+            color: 'rgba(255,255,255,0.6)',
+            fontSize: 13,
+            fontWeight: 420,
             textDecoration: 'none',
             transition: 'color 0.2s',
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
-          onMouseLeave={(e) => (e.currentTarget.style.color = '#a1a1aa')}
+          onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.6)')}
         >
           Log in
         </a>
-        <button className="btn-primary" style={{ fontSize: 14 }}>
+        <button
+          style={{
+            background: '#fff',
+            color: '#0c0b0e',
+            border: 'none',
+            borderRadius: 8,
+            padding: '8px 18px',
+            fontSize: 13,
+            fontWeight: 600,
+            cursor: 'pointer',
+            transition: 'opacity 0.2s',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
+          onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+        >
           Get started
         </button>
       </div>

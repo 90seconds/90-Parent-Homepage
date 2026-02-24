@@ -1,8 +1,17 @@
 import { useState, useEffect } from 'react'
 import { useVisibility } from '../hooks/useVisibility'
 
-const BRAND = '#ec4899'
-const BRAND_LIGHT = '#f472b6'
+const BRAND = '#FF9DB3'
+const BRAND_LIGHT = '#FFB8C8'
+
+const C = {
+  bg: '#08080A',
+  bg2: '#0D0D10',
+  tx: '#E8E6ED',
+  tS: '#8A8890',
+  tF: '#55535A',
+  brd: '#1F1F24',
+}
 
 export default function TheAgency() {
   const [ready, setReady] = useState(false)
@@ -22,7 +31,7 @@ export default function TheAgency() {
   ]
 
   return (
-    <div style={{ background: '#030305', minHeight: '100vh', color: '#fff' }}>
+    <div style={{ background: C.bg, minHeight: '100vh', color: C.tx }}>
       <section style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '120px 40px 80px', position: 'relative' }}>
         <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(circle at 30% 40%, ${BRAND}15 0%, transparent 50%), radial-gradient(circle at 70% 60%, ${BRAND}10 0%, transparent 40%)`, opacity: ready ? 1 : 0, transition: 'opacity 1.5s' }} />
 
@@ -41,7 +50,7 @@ export default function TheAgency() {
         </div>
       </section>
 
-      <section ref={diffRef as React.RefObject<HTMLElement>} style={{ padding: '120px 40px', background: '#06060a' }}>
+      <section ref={diffRef as React.RefObject<HTMLElement>} style={{ padding: '120px 40px', background: C.bg2 }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 80, opacity: diffVis ? 1 : 0, transition: 'opacity 0.8s' }}>
             <div style={{ fontSize: 13, color: BRAND_LIGHT, fontWeight: 600, letterSpacing: '0.15em', marginBottom: 16 }}>THE DIFFERENCE</div>
@@ -86,7 +95,7 @@ export default function TheAgency() {
         </div>
       </section>
 
-      <section ref={ctaRef as React.RefObject<HTMLElement>} style={{ padding: '120px 40px', background: '#06060a' }}>
+      <section ref={ctaRef as React.RefObject<HTMLElement>} style={{ padding: '120px 40px', background: C.bg2 }}>
         <div style={{ maxWidth: 800, margin: '0 auto', textAlign: 'center', opacity: ctaVis ? 1 : 0, transform: ctaVis ? 'translateY(0)' : 'translateY(30px)', transition: 'all 0.8s' }}>
           <h2 style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 24 }}>Let's make something together</h2>
           <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.6)', marginBottom: 40, maxWidth: 500, margin: '0 auto 40px' }}>Tell us what you're trying to achieve. We'll show you what's possible.</p>

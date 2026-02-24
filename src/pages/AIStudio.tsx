@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useVisibility } from '../hooks/useVisibility'
 
-const BRAND = '#8b5cf6'
-const BRAND_LIGHT = '#a78bfa'
+const BRAND = '#A78BFA'
+const BRAND_LIGHT = '#C4B5FD'
 
 export default function AIStudio() {
   const [ready, setReady] = useState(false)

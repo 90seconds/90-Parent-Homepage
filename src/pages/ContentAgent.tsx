@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useVisibility } from '../hooks/useVisibility'
 
-const BRAND = '#22d3ee'
-const BRAND_LIGHT = '#67e8f9'
+const BRAND = '#7DD3E8'
+const BRAND_LIGHT = '#A5E8F4'
 
 export default function ContentAgent() {
   const [ready, setReady] = useState(false)
