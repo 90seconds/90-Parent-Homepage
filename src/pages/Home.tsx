@@ -248,7 +248,7 @@ export default function Home() {
                       transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
                       transform: ready ? (isHovered ? 'translateY(-12px) scale(1.03)' : 'translateY(0)') : 'translateY(30px)',
                       opacity: ready ? 1 : 0,
-                      transitionDelay: `${0.1 + i * 0.08}s`,
+                      transitionDelay: ready ? '0s' : `${0.1 + i * 0.08}s`,
                       boxShadow: isHovered
                         ? `0 0 25px ${mode.color}40, 0 0 60px ${mode.color}25, 0 0 100px ${mode.color}15, 0 20px 60px ${mode.color}30, inset 0 0 60px ${mode.color}08`
                         : '0 4px 20px rgba(0,0,0,0.2)',
@@ -608,7 +608,7 @@ export default function Home() {
                       transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
                       transform: ready ? (isHovered ? 'translateY(8px) scale(1.04)' : 'translateY(0)') : 'translateY(-30px)',
                       opacity: ready ? 1 : 0,
-                      transitionDelay: `${0.5 + i * 0.06}s`,
+                      transitionDelay: ready ? '0s' : `${0.5 + i * 0.06}s`,
                       boxShadow: isHovered
                         ? `0 0 20px ${app.color}40, 0 0 50px ${app.color}25, 0 0 80px ${app.color}15, 0 -15px 50px ${app.color}25, inset 0 0 40px ${app.color}08`
                         : 'none',
