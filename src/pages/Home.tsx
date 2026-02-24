@@ -43,7 +43,7 @@ const coreModes = [
 ]
 
 const videoApps = [
-  { name: 'Content Agent', description: 'Manages your video library and repurposes existing assets automatically', metric: '10x faster', color: '#7DD3E8', icon: '◈', path: '/content-agent' },
+  { name: 'Content App Pro', description: 'Manages your video library and repurposes existing assets automatically', metric: '10x faster', color: '#7DD3E8', icon: '◈', path: '/content-agent' },
   { name: 'Customer Story Platform', description: 'Productized B2B customer proof at scale', metric: '200+ stories/quarter', color: '#F0A878', icon: '★', path: '/customer-story' },
   { name: 'Real Shoots', description: 'Global production through local creator teams', metric: '110+ countries', color: '#4EDBA0', icon: '◉', path: '/real-shoots' },
   { name: '90 AI Studio', description: 'Unified AI marketplace and operating layer', metric: 'Every AI model', color: '#A78BFA', icon: '◎', path: '/ai-studio' },
@@ -182,20 +182,56 @@ export default function Home() {
                       setHoveredIndex(null)
                     }}
                     style={{
-                      background: isHovered ? `linear-gradient(180deg, ${mode.color}12, ${mode.color}04)` : C.bg2,
-                      border: `1px solid ${isHovered ? mode.color + '40' : C.brd}`,
+                      background: isHovered ? `linear-gradient(180deg, ${mode.color}15, ${mode.color}05)` : C.bg2,
+                      border: `1px solid ${isHovered ? mode.color + '60' : C.brd}`,
                       borderRadius: 16,
                       padding: 24,
                       cursor: 'pointer',
                       transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
-                      transform: ready ? (isHovered ? 'translateY(-12px) scale(1.02)' : 'translateY(0)') : 'translateY(30px)',
+                      transform: ready ? (isHovered ? 'translateY(-12px) scale(1.03)' : 'translateY(0)') : 'translateY(30px)',
                       opacity: ready ? 1 : 0,
                       transitionDelay: `${0.1 + i * 0.08}s`,
-                      boxShadow: isHovered ? `0 16px 48px ${mode.color}20` : '0 4px 20px rgba(0,0,0,0.2)',
+                      boxShadow: isHovered
+                        ? `0 0 25px ${mode.color}40, 0 0 60px ${mode.color}25, 0 0 100px ${mode.color}15, 0 20px 60px ${mode.color}30, inset 0 0 60px ${mode.color}08`
+                        : '0 4px 20px rgba(0,0,0,0.2)',
                       position: 'relative',
                       textDecoration: 'none',
+                      overflow: 'hidden',
                     }}
                   >
+                    {/* Inner radiance - pulsing core glow */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        width: '150%',
+                        height: '150%',
+                        transform: 'translate(-50%, -50%)',
+                        background: `radial-gradient(ellipse at center, ${mode.color}20 0%, transparent 70%)`,
+                        opacity: isHovered ? 1 : 0,
+                        transition: 'opacity 0.4s',
+                        animation: isHovered ? 'inner-radiance 2s ease-in-out infinite' : 'none',
+                        pointerEvents: 'none',
+                      }}
+                    />
+
+                    {/* Shimmer edge effect */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        borderRadius: 16,
+                        background: isHovered
+                          ? `linear-gradient(90deg, transparent, ${mode.color}30, transparent)`
+                          : 'transparent',
+                        backgroundSize: '200% 100%',
+                        animation: isHovered ? 'border-shimmer 2s linear infinite' : 'none',
+                        opacity: isHovered ? 1 : 0,
+                        pointerEvents: 'none',
+                      }}
+                    />
+
                     {/* Connector line to backbone */}
                     <div
                       style={{
@@ -203,14 +239,32 @@ export default function Home() {
                         bottom: isHovered ? -68 : -56,
                         left: '50%',
                         transform: 'translateX(-50%)',
-                        width: isHovered ? 2 : 1,
+                        width: isHovered ? 3 : 1,
                         height: isHovered ? 68 : 56,
                         background: isHovered
-                          ? `linear-gradient(to bottom, ${mode.color}, ${mode.color})`
+                          ? `linear-gradient(to bottom, ${mode.color}, ${mode.color}80)`
                           : `linear-gradient(to bottom, ${C.brd}, ${electric.core}60)`,
                         transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
+                        boxShadow: isHovered ? `0 0 12px ${mode.color}80` : 'none',
                       }}
                     />
+
+                    {/* Energy pulse down connector */}
+                    {isHovered && (
+                      <div
+                        style={{
+                          position: 'absolute',
+                          bottom: -68,
+                          left: '50%',
+                          transform: 'translateX(-50%)',
+                          width: 6,
+                          height: 20,
+                          background: `linear-gradient(to bottom, ${mode.color}, transparent)`,
+                          borderRadius: 3,
+                          animation: 'energy-flow-down 1s ease-out infinite',
+                        }}
+                      />
+                    )}
 
                     <div style={{ position: 'relative', zIndex: 1 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
@@ -219,33 +273,68 @@ export default function Home() {
                             width: 56,
                             height: 56,
                             borderRadius: 16,
-                            background: isHovered ? `${mode.color}30` : `${mode.color}15`,
+                            background: isHovered ? `${mode.color}35` : `${mode.color}15`,
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             transition: 'all 0.3s',
-                            boxShadow: isHovered ? `0 0 30px ${mode.color}60` : 'none',
+                            boxShadow: isHovered ? `0 0 30px ${mode.color}70, 0 0 60px ${mode.color}40, inset 0 0 20px ${mode.color}30` : 'none',
+                            animation: isHovered ? 'ethereal-pulse 2s ease-in-out infinite' : 'none',
                           }}
                         >
-                          <span style={{ fontSize: 24, color: mode.color, filter: isHovered ? `drop-shadow(0 0 10px ${mode.color})` : 'none' }}>
+                          <span
+                            style={{
+                              fontSize: 24,
+                              color: mode.color,
+                              filter: isHovered ? `drop-shadow(0 0 12px ${mode.color}) drop-shadow(0 0 24px ${mode.color})` : 'none',
+                              animation: isHovered ? 'icon-pulse 1.5s ease-in-out infinite' : 'none',
+                            }}
+                          >
                             {mode.icon}
                           </span>
                         </div>
                         <div>
-                          <div style={{ fontSize: 11, color: mode.color, fontWeight: 500, marginBottom: 2, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                          <div
+                            style={{
+                              fontSize: 11,
+                              color: mode.color,
+                              fontWeight: 500,
+                              marginBottom: 2,
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.05em',
+                              textShadow: isHovered ? `0 0 20px ${mode.color}` : 'none',
+                            }}
+                          >
                             {mode.tagline}
                           </div>
-                          <div style={{ fontSize: 16, fontWeight: 600, color: C.tx }}>{mode.name}</div>
+                          <div
+                            style={{
+                              fontSize: 16,
+                              fontWeight: 600,
+                              color: isHovered ? '#fff' : C.tx,
+                              textShadow: isHovered ? `0 0 30px ${mode.color}60` : 'none',
+                              transition: 'all 0.3s',
+                            }}
+                          >
+                            {mode.name}
+                          </div>
                         </div>
                       </div>
-                      <p style={{ fontSize: 14, color: isHovered ? C.tS : C.tF, lineHeight: 1.6, marginBottom: 14, transition: 'color 0.3s' }}>
+                      <p style={{ fontSize: 14, color: isHovered ? C.tx : C.tF, lineHeight: 1.6, marginBottom: 14, transition: 'color 0.3s' }}>
                         {mode.description}
                       </p>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ fontSize: 13, color: mode.color, fontWeight: 550 }}>
+                        <span
+                          style={{
+                            fontSize: 13,
+                            color: mode.color,
+                            fontWeight: 550,
+                            textShadow: isHovered ? `0 0 15px ${mode.color}` : 'none',
+                          }}
+                        >
                           {mode.metric}
                         </span>
-                        <span style={{ fontSize: 12, color: C.tF }}>Learn more →</span>
+                        <span style={{ fontSize: 12, color: isHovered ? C.tS : C.tF, transition: 'color 0.3s' }}>Learn more →</span>
                       </div>
                     </div>
                   </Link>
@@ -437,20 +526,56 @@ export default function Home() {
                       setHoveredIndex(null)
                     }}
                     style={{
-                      background: isHovered ? `linear-gradient(0deg, ${app.color}12, ${app.color}04)` : C.bg2,
-                      border: `1px solid ${isHovered ? app.color + '40' : C.brd}`,
+                      background: isHovered ? `linear-gradient(0deg, ${app.color}15, ${app.color}05)` : C.bg2,
+                      border: `1px solid ${isHovered ? app.color + '60' : C.brd}`,
                       borderRadius: 12,
                       padding: 18,
                       cursor: 'pointer',
                       transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
-                      transform: ready ? (isHovered ? 'translateY(8px) scale(1.02)' : 'translateY(0)') : 'translateY(-30px)',
+                      transform: ready ? (isHovered ? 'translateY(8px) scale(1.04)' : 'translateY(0)') : 'translateY(-30px)',
                       opacity: ready ? 1 : 0,
                       transitionDelay: `${0.5 + i * 0.06}s`,
-                      boxShadow: isHovered ? `0 -12px 40px ${app.color}15` : 'none',
+                      boxShadow: isHovered
+                        ? `0 0 20px ${app.color}40, 0 0 50px ${app.color}25, 0 0 80px ${app.color}15, 0 -15px 50px ${app.color}25, inset 0 0 40px ${app.color}08`
+                        : 'none',
                       position: 'relative',
                       textDecoration: 'none',
+                      overflow: 'hidden',
                     }}
                   >
+                    {/* Inner radiance - pulsing core glow */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        width: '180%',
+                        height: '180%',
+                        transform: 'translate(-50%, -50%)',
+                        background: `radial-gradient(ellipse at center, ${app.color}25 0%, transparent 60%)`,
+                        opacity: isHovered ? 1 : 0,
+                        transition: 'opacity 0.4s',
+                        animation: isHovered ? 'inner-radiance 2s ease-in-out infinite' : 'none',
+                        pointerEvents: 'none',
+                      }}
+                    />
+
+                    {/* Shimmer edge effect */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        borderRadius: 12,
+                        background: isHovered
+                          ? `linear-gradient(90deg, transparent, ${app.color}25, transparent)`
+                          : 'transparent',
+                        backgroundSize: '200% 100%',
+                        animation: isHovered ? 'border-shimmer 1.5s linear infinite' : 'none',
+                        opacity: isHovered ? 1 : 0,
+                        pointerEvents: 'none',
+                      }}
+                    />
+
                     {/* Connector line to backbone */}
                     <div
                       style={{
@@ -458,14 +583,32 @@ export default function Home() {
                         top: isHovered ? -64 : -56,
                         left: '50%',
                         transform: 'translateX(-50%)',
-                        width: isHovered ? 2 : 1,
+                        width: isHovered ? 3 : 1,
                         height: isHovered ? 64 : 56,
                         background: isHovered
-                          ? `linear-gradient(to top, ${app.color}, ${app.color})`
+                          ? `linear-gradient(to top, ${app.color}, ${app.color}80)`
                           : `linear-gradient(to top, ${C.brd}, ${electric.core}60)`,
                         transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
+                        boxShadow: isHovered ? `0 0 10px ${app.color}80` : 'none',
                       }}
                     />
+
+                    {/* Energy pulse up connector */}
+                    {isHovered && (
+                      <div
+                        style={{
+                          position: 'absolute',
+                          top: -64,
+                          left: '50%',
+                          transform: 'translateX(-50%)',
+                          width: 5,
+                          height: 16,
+                          background: `linear-gradient(to top, ${app.color}, transparent)`,
+                          borderRadius: 3,
+                          animation: 'energy-flow-up 0.8s ease-out infinite',
+                        }}
+                      />
+                    )}
 
                     <div style={{ position: 'relative', zIndex: 1 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
@@ -474,24 +617,49 @@ export default function Home() {
                             width: 36,
                             height: 36,
                             borderRadius: 10,
-                            background: isHovered ? `${app.color}30` : `${app.color}15`,
+                            background: isHovered ? `${app.color}35` : `${app.color}15`,
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             transition: 'all 0.3s',
-                            boxShadow: isHovered ? `0 0 20px ${app.color}60` : 'none',
+                            boxShadow: isHovered ? `0 0 25px ${app.color}70, 0 0 50px ${app.color}40, inset 0 0 15px ${app.color}30` : 'none',
+                            animation: isHovered ? 'ethereal-pulse 2s ease-in-out infinite' : 'none',
                           }}
                         >
-                          <span style={{ fontSize: 14, color: app.color, filter: isHovered ? `drop-shadow(0 0 8px ${app.color})` : 'none' }}>
+                          <span
+                            style={{
+                              fontSize: 14,
+                              color: app.color,
+                              filter: isHovered ? `drop-shadow(0 0 10px ${app.color}) drop-shadow(0 0 20px ${app.color})` : 'none',
+                              animation: isHovered ? 'icon-pulse 1.5s ease-in-out infinite' : 'none',
+                            }}
+                          >
                             {app.icon}
                           </span>
                         </div>
-                        <div style={{ fontSize: 13, fontWeight: 550, color: C.tx }}>{app.name}</div>
+                        <div
+                          style={{
+                            fontSize: 13,
+                            fontWeight: 550,
+                            color: isHovered ? '#fff' : C.tx,
+                            textShadow: isHovered ? `0 0 25px ${app.color}60` : 'none',
+                            transition: 'all 0.3s',
+                          }}
+                        >
+                          {app.name}
+                        </div>
                       </div>
-                      <p style={{ fontSize: 11, color: isHovered ? C.tS : C.tF, lineHeight: 1.5, marginBottom: 8, transition: 'color 0.3s' }}>
+                      <p style={{ fontSize: 11, color: isHovered ? C.tx : C.tF, lineHeight: 1.5, marginBottom: 8, transition: 'color 0.3s' }}>
                         {app.description}
                       </p>
-                      <div style={{ fontSize: 11, color: app.color, fontWeight: 550 }}>
+                      <div
+                        style={{
+                          fontSize: 11,
+                          color: app.color,
+                          fontWeight: 550,
+                          textShadow: isHovered ? `0 0 12px ${app.color}` : 'none',
+                        }}
+                      >
                         {app.metric}
                       </div>
                     </div>
