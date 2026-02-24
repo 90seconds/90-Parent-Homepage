@@ -43,10 +43,10 @@ const coreModes = [
 ]
 
 const videoApps = [
-  { name: 'Content App Pro', description: 'Manages your video library and repurposes existing assets automatically', metric: '10x faster', color: '#7DD3E8', icon: '◈', path: '/content-agent' },
-  { name: 'Customer Story Platform', description: 'Productized B2B customer proof at scale', metric: '200+ stories/quarter', color: '#F0A878', icon: '★', path: '/customer-story' },
   { name: 'Real Shoots', description: 'Global production through local creator teams', metric: '110+ countries', color: '#4EDBA0', icon: '◉', path: '/real-shoots' },
   { name: '90 AI Studio', description: 'Unified AI marketplace and operating layer', metric: 'Every AI model', color: '#A78BFA', icon: '◎', path: '/ai-studio' },
+  { name: 'Customer Story App', description: 'Productized B2B customer proof at scale', metric: '200+ stories/quarter', color: '#F0A878', icon: '★', path: '/customer-story' },
+  { name: 'Content Pro', description: 'Manages your video library and repurposes existing assets automatically', metric: '10x faster', color: '#7DD3E8', icon: '◈', path: '/content-agent' },
   { name: 'Creator Pro', description: 'SaaS platform for creators to run their video business', metric: 'Your business, powered', color: '#FBBF24', icon: '◇', path: '/creator-pro' },
   { name: 'Affiliate', description: 'Sell video to your customers. We deliver. You earn.', metric: 'Partner program', color: '#5EEAD4', icon: '◆', path: '/affiliate' },
 ]
