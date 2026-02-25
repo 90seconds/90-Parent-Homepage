@@ -95,9 +95,8 @@ export default function Home() {
   const getConnectorGlow = (position: number, color: string) => {
     if (hoveredRow) return null // Don't show pulse glow when hovering
     const pulseWidth = 0.08 // Glow effect width
-    const pulseOffset = 0.08 // Offset - connectors light up slightly before pulse arrives
-    const adjustedPulsePosition = (pulsePosition + pulseOffset) % 1
-    const distance = Math.abs(adjustedPulsePosition - position)
+    // No offset needed - pulse position is now directly synced via JS
+    const distance = Math.abs(pulsePosition - position)
     const wrappedDistance = Math.min(distance, 1 - distance) // Handle wrap-around
     if (wrappedDistance < pulseWidth) {
       const intensity = 1 - (wrappedDistance / pulseWidth)
@@ -590,28 +589,30 @@ export default function Home() {
                       />
                     )}
 
-                    {/* Ambient traveling pulse with glow */}
+                    {/* Ambient traveling pulse with glow - JS positioned for sync */}
                     <div
                       style={{
                         position: 'absolute',
                         top: -20,
+                        left: `calc(${pulsePosition * 100}% - 100px)`,
                         width: 200,
                         height: 'calc(100% + 40px)',
                         background: `radial-gradient(ellipse 100% 50% at center, ${activeColor || electric.core}60 0%, ${activeColor || electric.core}30 30%, transparent 70%)`,
                         borderRadius: 4,
-                        animation: 'travel 5s linear infinite',
                         filter: `blur(8px)`,
+                        pointerEvents: 'none',
                       }}
                     />
                     <div
                       style={{
                         position: 'absolute',
                         top: 0,
+                        left: `calc(${pulsePosition * 100}% - 75px)`,
                         width: 150,
                         height: '100%',
                         background: `linear-gradient(90deg, transparent 10%, ${activeColor || electric.core}90 50%, transparent 90%)`,
                         borderRadius: 4,
-                        animation: 'travel 5s linear infinite',
+                        pointerEvents: 'none',
                       }}
                     />
                   </div>
