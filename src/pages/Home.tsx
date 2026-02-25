@@ -550,16 +550,40 @@ export default function Home() {
                       />
                     )}
 
-                    {/* Ambient traveling pulse */}
+                    {/* Ambient traveling pulses */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        width: 150,
+                        height: '100%',
+                        background: `linear-gradient(90deg, transparent, ${activeColor || electric.core}70, transparent)`,
+                        borderRadius: 4,
+                        animation: 'travel 4s linear infinite',
+                      }}
+                    />
                     <div
                       style={{
                         position: 'absolute',
                         top: 0,
                         width: 100,
                         height: '100%',
-                        background: `linear-gradient(90deg, transparent, ${activeColor || electric.core}40, transparent)`,
+                        background: `linear-gradient(90deg, transparent, ${activeColor || electric.core}50, transparent)`,
                         borderRadius: 4,
-                        animation: 'travel 5s linear infinite',
+                        animation: 'travel 6s linear infinite',
+                        animationDelay: '-2s',
+                      }}
+                    />
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        width: 80,
+                        height: '100%',
+                        background: `linear-gradient(90deg, transparent, ${activeColor || electric.core}60, transparent)`,
+                        borderRadius: 4,
+                        animation: 'travel 3.5s linear infinite',
+                        animationDelay: '-1s',
                       }}
                     />
                   </div>
