@@ -94,8 +94,8 @@ export default function Home() {
   // Calculate if a connector at a given position should be lit
   const getConnectorGlow = (position: number, color: string) => {
     if (hoveredRow) return null // Don't show pulse glow when hovering
-    const pulseWidth = 0.12 // Width of the glow effect
-    const pulseOffset = 0.07 // Offset to sync with visual pulse center
+    const pulseWidth = 0.06 // Tight glow effect for quick fade
+    const pulseOffset = 0.11 // Offset to sync with visual pulse center
     const adjustedPulsePosition = (pulsePosition + pulseOffset) % 1
     const distance = Math.abs(adjustedPulsePosition - position)
     const wrappedDistance = Math.min(distance, 1 - distance) // Handle wrap-around
