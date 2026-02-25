@@ -550,12 +550,12 @@ export default function Home() {
                       />
                     )}
 
-                    {/* Ambient traveling pulses */}
+                    {/* Ambient traveling pulses - same speed, staggered */}
                     <div
                       style={{
                         position: 'absolute',
                         top: 0,
-                        width: 150,
+                        width: 120,
                         height: '100%',
                         background: `linear-gradient(90deg, transparent, ${activeColor || electric.core}70, transparent)`,
                         borderRadius: 4,
@@ -566,24 +566,24 @@ export default function Home() {
                       style={{
                         position: 'absolute',
                         top: 0,
-                        width: 100,
+                        width: 120,
                         height: '100%',
-                        background: `linear-gradient(90deg, transparent, ${activeColor || electric.core}50, transparent)`,
+                        background: `linear-gradient(90deg, transparent, ${activeColor || electric.core}70, transparent)`,
                         borderRadius: 4,
-                        animation: 'travel 6s linear infinite',
-                        animationDelay: '-2s',
+                        animation: 'travel 4s linear infinite',
+                        animationDelay: '-1.33s',
                       }}
                     />
                     <div
                       style={{
                         position: 'absolute',
                         top: 0,
-                        width: 80,
+                        width: 120,
                         height: '100%',
-                        background: `linear-gradient(90deg, transparent, ${activeColor || electric.core}60, transparent)`,
+                        background: `linear-gradient(90deg, transparent, ${activeColor || electric.core}70, transparent)`,
                         borderRadius: 4,
-                        animation: 'travel 3.5s linear infinite',
-                        animationDelay: '-1s',
+                        animation: 'travel 4s linear infinite',
+                        animationDelay: '-2.66s',
                       }}
                     />
                   </div>
