@@ -67,12 +67,42 @@ export default function Home() {
   const [ready, setReady] = useState(false)
   const [hoveredRow, setHoveredRow] = useState<string | null>(null)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [pulsePosition, setPulsePosition] = useState(0)
   const [howItWorksRef, howItWorksVis] = useVisibility()
   const [ctaRef, ctaVis] = useVisibility()
 
   useEffect(() => {
     setReady(true)
   }, [])
+
+  // Track pulse position for connector line lighting
+  useEffect(() => {
+    const duration = 5000 // 5s animation
+    const startTime = Date.now()
+
+    const animate = () => {
+      const elapsed = (Date.now() - startTime) % duration
+      const position = elapsed / duration // 0 to 1
+      setPulsePosition(position)
+      requestAnimationFrame(animate)
+    }
+
+    const frameId = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(frameId)
+  }, [])
+
+  // Calculate if a connector at a given position should be lit
+  const getConnectorGlow = (position: number, color: string) => {
+    if (hoveredRow) return null // Don't show pulse glow when hovering
+    const pulseWidth = 0.15 // Width of the glow effect
+    const distance = Math.abs(pulsePosition - position)
+    const wrappedDistance = Math.min(distance, 1 - distance) // Handle wrap-around
+    if (wrappedDistance < pulseWidth) {
+      const intensity = 1 - (wrappedDistance / pulseWidth)
+      return `0 0 ${20 * intensity}px ${color}${Math.round(intensity * 80).toString(16).padStart(2, '0')}`
+    }
+    return null
+  }
 
   return (
     <div>
@@ -291,21 +321,29 @@ export default function Home() {
                     </div>
 
                     {/* Connector line to backbone */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        bottom: isHovered ? -68 : -56,
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        width: isHovered ? 3 : 1,
-                        height: isHovered ? 68 : 56,
-                        background: isHovered
-                          ? `linear-gradient(to bottom, ${mode.color}, ${mode.color}80)`
-                          : `linear-gradient(to bottom, ${C.brd}, ${electric.core}60)`,
-                        transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
-                        boxShadow: isHovered ? `0 0 12px ${mode.color}80` : 'none',
-                      }}
-                    />
+                    {(() => {
+                      const connectorPosition = (i + 0.5) / 3 // 0.167, 0.5, 0.833
+                      const pulseGlow = getConnectorGlow(connectorPosition, electric.core)
+                      return (
+                        <div
+                          style={{
+                            position: 'absolute',
+                            bottom: isHovered ? -68 : -56,
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            width: isHovered ? 3 : pulseGlow ? 2 : 1,
+                            height: isHovered ? 68 : 56,
+                            background: isHovered
+                              ? `linear-gradient(to bottom, ${mode.color}, ${mode.color}80)`
+                              : pulseGlow
+                              ? `linear-gradient(to bottom, ${electric.core}90, ${electric.core}40)`
+                              : `linear-gradient(to bottom, ${C.brd}, ${electric.core}60)`,
+                            transition: 'width 0.15s, background 0.15s',
+                            boxShadow: isHovered ? `0 0 12px ${mode.color}80` : pulseGlow || 'none',
+                          }}
+                        />
+                      )
+                    })()}
 
                     {/* Energy pulses UP into card from backbone - dual offset */}
                     {isHovered && (
@@ -663,21 +701,29 @@ export default function Home() {
                     </div>
 
                     {/* Connector line to backbone */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: isHovered ? -64 : -56,
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        width: isHovered ? 3 : 1,
-                        height: isHovered ? 64 : 56,
-                        background: isHovered
-                          ? `linear-gradient(to top, ${app.color}, ${app.color}80)`
-                          : `linear-gradient(to top, ${C.brd}, ${electric.core}60)`,
-                        transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
-                        boxShadow: isHovered ? `0 0 10px ${app.color}80` : 'none',
-                      }}
-                    />
+                    {(() => {
+                      const connectorPosition = (i + 0.5) / 6 // 0.083, 0.25, 0.417, 0.583, 0.75, 0.917
+                      const pulseGlow = getConnectorGlow(connectorPosition, electric.core)
+                      return (
+                        <div
+                          style={{
+                            position: 'absolute',
+                            top: isHovered ? -64 : -56,
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            width: isHovered ? 3 : pulseGlow ? 2 : 1,
+                            height: isHovered ? 64 : 56,
+                            background: isHovered
+                              ? `linear-gradient(to top, ${app.color}, ${app.color}80)`
+                              : pulseGlow
+                              ? `linear-gradient(to top, ${electric.core}90, ${electric.core}40)`
+                              : `linear-gradient(to top, ${C.brd}, ${electric.core}60)`,
+                            transition: 'width 0.15s, background 0.15s',
+                            boxShadow: isHovered ? `0 0 10px ${app.color}80` : pulseGlow || 'none',
+                          }}
+                        />
+                      )
+                    })()}
 
                     {/* Energy pulses DOWN into card from backbone - dual offset */}
                     {isHovered && (
