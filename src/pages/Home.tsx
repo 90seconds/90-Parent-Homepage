@@ -550,40 +550,28 @@ export default function Home() {
                       />
                     )}
 
-                    {/* Ambient traveling pulses - same speed, staggered */}
+                    {/* Ambient traveling pulse with glow */}
                     <div
                       style={{
                         position: 'absolute',
-                        top: 0,
-                        width: 120,
-                        height: '100%',
-                        background: `linear-gradient(90deg, transparent, ${activeColor || electric.core}70, transparent)`,
+                        top: -20,
+                        width: 200,
+                        height: 'calc(100% + 40px)',
+                        background: `radial-gradient(ellipse 100% 50% at center, ${activeColor || electric.core}60 0%, ${activeColor || electric.core}30 30%, transparent 70%)`,
                         borderRadius: 4,
-                        animation: 'travel 4s linear infinite',
+                        animation: 'travel 5s linear infinite',
+                        filter: `blur(8px)`,
                       }}
                     />
                     <div
                       style={{
                         position: 'absolute',
                         top: 0,
-                        width: 120,
+                        width: 150,
                         height: '100%',
-                        background: `linear-gradient(90deg, transparent, ${activeColor || electric.core}70, transparent)`,
+                        background: `linear-gradient(90deg, transparent 10%, ${activeColor || electric.core}90 50%, transparent 90%)`,
                         borderRadius: 4,
-                        animation: 'travel 4s linear infinite',
-                        animationDelay: '-1.33s',
-                      }}
-                    />
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: 0,
-                        width: 120,
-                        height: '100%',
-                        background: `linear-gradient(90deg, transparent, ${activeColor || electric.core}70, transparent)`,
-                        borderRadius: 4,
-                        animation: 'travel 4s linear infinite',
-                        animationDelay: '-2.66s',
+                        animation: 'travel 5s linear infinite',
                       }}
                     />
                   </div>
